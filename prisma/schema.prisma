@@ -1,0 +1,76 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+// Anything people can book: a retreat, a course, a clinic, a consultation.
+model Event {
+  id          String    @id @default(cuid())
+  slug        String    @unique
+  title       String
+  kind        String    @default("CLINIC") // RETREAT | COURSE | CLINIC
+  subtitle    String?
+  summary     String?
+  description String? // plain text, blank lines separate paragraphs
+  imageUrl    String?
+  location    String?
+  published   Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  sessions    Session[]
+}
+
+// One dated slot of an event, with its own capacity and price.
+model Session {
+  id              String    @id @default(cuid())
+  eventId         String
+  event           Event     @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  startsAt        DateTime
+  endsAt          DateTime?
+  capacity        Int
+  priceCents      Int
+  earlyPriceCents Int?
+  earlyUntil      DateTime?
+  currency        String    @default("CHF")
+  allowOnline     Boolean   @default(true)
+  allowOnSite     Boolean   @default(true)
+  note            String?
+  createdAt       DateTime  @default(now())
+  bookings        Booking[]
+
+  @@index([startsAt])
+}
+
+model Booking {
+  id              String    @id @default(cuid())
+  sessionId       String
+  session         Session   @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  name            String
+  email           String
+  phone           String?
+  seats           Int       @default(1)
+  message         String?
+  paymentMethod   String // ONLINE | ON_SITE
+  status          String    @default("PENDING") // PENDING | CONFIRMED | PAID | CANCELLED
+  amountCents     Int
+  currency        String    @default("CHF")
+  stripeSessionId String?   @unique
+  paidAt          DateTime?
+  createdAt       DateTime  @default(now())
+
+  @@index([sessionId])
+  @@index([email])
+}
+
+// Daily page view counter, no cookies and no personal data.
+model PageView {
+  id    Int    @id @default(autoincrement())
+  path  String
+  day   String // YYYY-MM-DD
+  count Int    @default(0)
+
+  @@unique([path, day])
+}

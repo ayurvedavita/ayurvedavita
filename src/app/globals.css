@@ -1,0 +1,237 @@
+@import "tailwindcss";
+
+/* Each theme only sets these variables; components use the matching Tailwind colors (bg-bg, text-accent...). */
+:root,
+[data-theme="original"] {
+  --bg: #133124;
+  --bg-alt: #0f2a1e;
+  --surface: #1b3d2e;
+  --text: #ffffff;
+  --muted: #cfd8d2;
+  --heading: #ffffff;
+  --highlight: #edb259;
+  --accent: #edb259;
+  --accent-text: #133124;
+  --border: rgba(255, 255, 255, 0.14);
+  --header-bg: #133124;
+  --header-text: #edb259;
+  --header-active: #ffffff;
+  --radius: 6px;
+  --radius-btn: 6px;
+  --font-heading: var(--font-philosopher);
+  --font-body: var(--font-arima);
+  --font-ui: var(--font-fjalla);
+  --font-script: var(--font-satisfy);
+  --font-tagline: var(--font-nunito);
+  --ui-tracking: 0.05em;
+  --ui-transform: uppercase;
+}
+
+[data-theme="sable"] {
+  --bg: #f5efe4;
+  --bg-alt: #ebe2d2;
+  --surface: #fffaf2;
+  --text: #2b3a30;
+  --muted: #6b7468;
+  --heading: #133124;
+  --highlight: #9a6b34;
+  --accent: #133124;
+  --accent-text: #f5efe4;
+  --border: #dccfb8;
+  --header-bg: #f5efe4;
+  --header-text: #2b3a30;
+  --header-active: #9a6b34;
+  --radius: 2px;
+  --radius-btn: 999px;
+  --font-heading: var(--font-cormorant);
+  --font-body: var(--font-jost);
+  --font-ui: var(--font-jost);
+  --font-script: var(--font-cormorant);
+  --font-tagline: var(--font-jost);
+  --ui-tracking: 0.18em;
+  --ui-transform: uppercase;
+}
+
+[data-theme="terre"] {
+  --bg: #fbf6f0;
+  --bg-alt: #f1e4d8;
+  --surface: #ffffff;
+  --text: #3b2a24;
+  --muted: #7a675e;
+  --heading: #3b2a24;
+  --highlight: #b4654a;
+  --accent: #b4654a;
+  --accent-text: #ffffff;
+  --border: #ead9cb;
+  --header-bg: #fbf6f0;
+  --header-text: #3b2a24;
+  --header-active: #b4654a;
+  --radius: 18px;
+  --radius-btn: 14px;
+  --font-heading: var(--font-fraunces);
+  --font-body: var(--font-dmsans);
+  --font-ui: var(--font-dmsans);
+  --font-script: var(--font-fraunces);
+  --font-tagline: var(--font-dmsans);
+  --ui-tracking: 0.02em;
+  --ui-transform: none;
+}
+
+[data-theme="lumiere"] {
+  --bg: #ffffff;
+  --bg-alt: #f2f5f1;
+  --surface: #ffffff;
+  --text: #1d2a22;
+  --muted: #5f6b63;
+  --heading: #12231a;
+  --highlight: #3f6b4f;
+  --accent: #12231a;
+  --accent-text: #ffffff;
+  --border: #e3e8e4;
+  --header-bg: rgba(255, 255, 255, 0.92);
+  --header-text: #1d2a22;
+  --header-active: #3f6b4f;
+  --radius: 12px;
+  --radius-btn: 10px;
+  --font-heading: var(--font-inter);
+  --font-body: var(--font-inter);
+  --font-ui: var(--font-inter);
+  --font-script: var(--font-inter);
+  --font-tagline: var(--font-inter);
+  --ui-tracking: 0.01em;
+  --ui-transform: none;
+}
+
+/* Back office: one neutral, readable palette whatever the public theme is. */
+[data-theme="admin"] {
+  --bg: #f4f3ee;
+  --bg-alt: #ebe9e1;
+  --surface: #ffffff;
+  --text: #1f2a24;
+  --muted: #66706a;
+  --heading: #133124;
+  --highlight: #a8722a;
+  --accent: #133124;
+  --accent-text: #ffffff;
+  --border: #dedbd0;
+  --radius: 8px;
+  --radius-btn: 6px;
+  --font-heading: var(--font-inter);
+  --font-body: var(--font-inter);
+  --font-ui: var(--font-inter);
+  --ui-tracking: 0;
+  --ui-transform: none;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-alt: var(--bg-alt);
+  --color-surface: var(--surface);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-heading: var(--heading);
+  --color-highlight: var(--highlight);
+  --color-accent: var(--accent);
+  --color-accent-text: var(--accent-text);
+  --color-line: var(--border);
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+  --font-ui: var(--font-ui);
+  --font-script: var(--font-script);
+  --font-tagline: var(--font-tagline);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading), serif;
+  color: var(--heading);
+  line-height: 1.15;
+}
+
+.ui {
+  font-family: var(--font-ui), sans-serif;
+  letter-spacing: var(--ui-tracking);
+  text-transform: var(--ui-transform);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.4rem;
+  border-radius: var(--radius-btn);
+  background: var(--accent);
+  color: var(--accent-text);
+  font-family: var(--font-ui), sans-serif;
+  letter-spacing: var(--ui-tracking);
+  text-transform: var(--ui-transform);
+  font-weight: 500;
+  transition: filter 0.15s, transform 0.15s;
+  cursor: pointer;
+}
+.btn:hover {
+  filter: brightness(1.08);
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.field {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border-radius: var(--radius-btn);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 16px;
+}
+.field:focus {
+  outline: 2px solid var(--highlight);
+  outline-offset: 1px;
+}
+/* Pill buttons look odd on multi-line inputs. */
+textarea.field {
+  border-radius: var(--radius);
+}
+label.label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 0.3rem;
+}
+
+.prose-site p {
+  margin-bottom: 1.1em;
+}
+
+.partner-tile {
+  background: transparent;
+}
+[data-theme="sable"] .partner-tile,
+[data-theme="terre"] .partner-tile,
+[data-theme="lumiere"] .partner-tile {
+  background: #133124;
+}
