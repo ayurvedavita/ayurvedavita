@@ -7,7 +7,7 @@ Claude ticks each step when it is done and writes useful notes under it. The pla
 - [ ] 2. Site running on this computer, tour done
       Notes:
 - [ ] 3. Design chosen and unused designs removed
-      Design: ______  Program layout: ______
+      Design: sable (chosen 2026-10-12)  Program layout: not chosen yet (switch buttons still shown)
 - [ ] 4. Small edits done (or none wanted)
       Notes:
 - [ ] 5. Stripe test mode works locally (test payment shows as paid)

@@ -1,7 +1,7 @@
 // Public site look.
 // While CHOOSING_DESIGN is true, a bar at the bottom of the site switches between the designs.
 // Once the owner has chosen: set DEFAULT_THEME to the chosen design and CHOOSING_DESIGN to false.
-export const CHOOSING_DESIGN = true;
+export const CHOOSING_DESIGN = false;
 
 export const THEMES = {
   original: { label: "Original", header: "split", hero: "slider" },
@@ -11,7 +11,7 @@ export const THEMES = {
 } as const;
 
 export type ThemeName = keyof typeof THEMES;
-export const DEFAULT_THEME: ThemeName = "original";
+export const DEFAULT_THEME: ThemeName = "sable";
 export const THEME_COOKIE = "av_theme";
 
 export function isTheme(value: unknown): value is ThemeName {
